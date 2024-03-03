@@ -1,14 +1,26 @@
 <template>
   <NavBar />
+  <RouterView />
 </template>
 
 <script>
+// Reactivity
+
 import NavBar from "@/components/NavBar.vue";
+import { RouterView } from "vue-router";
 
 export default {
   name: "App",
   components: {
     NavBar,
+    RouterView,
+  },
+  data() {
+    return {
+      message: "Hello",
+      count: 0,
+      isVisible: true,
+    };
   },
 };
 </script>
