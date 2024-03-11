@@ -6,7 +6,11 @@
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, dicta?"
       />
       <BookList :books="paginatedBooks" />
-      <Pagination :currentPage="currentPage" :totalPages="totalPages" />
+      <Pagination
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        @page-changed="updatePage"
+      />
     </div>
   </section>
 </template>
@@ -38,6 +42,11 @@ export default {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
       return this.books.slice(startIndex, endIndex);
+    },
+  },
+  methods: {
+    updatePage(page) {
+      this.currentPage = page;
     },
   },
 };
