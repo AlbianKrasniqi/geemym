@@ -9,9 +9,9 @@
           >{{ book.author }}</span
         >
       </div>
-      <h5 class="card-title mt-3 fw-semibold">{{ book.name }}</h5>
+      <h5 class="card-title mt-3 fw-semibold">{{ truncatedTextForTitles }}</h5>
       <p class="card-text">
-        {{ book.description }}
+        {{ truncatedText }}
       </p>
       <div class="d-flex justify-content-between align-items-center">
         <a href="#" class="card-link">Read more</a>
@@ -50,8 +50,25 @@ export default {
         return "bg-danger";
       }
     },
+    truncatedText() {
+      if (this.book.description.length > 70) {
+        return this.book.description.slice(0, 70) + "...";
+      }
+
+      return this.book.description;
+    },
+    truncatedTextForTitles() {
+      if (this.book.name.length > 10) {
+        return this.book.name.slice(0, 15) + "...";
+      }
+      return this.book.name;
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.card-text {
+  min-height: 100px;
+}
+</style>
